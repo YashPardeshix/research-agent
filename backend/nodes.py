@@ -14,4 +14,19 @@ def fetch_node(state:AgentState) -> AgentState:
     return {"findings": local_findings}
 
 
- 
+def synthesis_node(state:AgentState) -> AgentState:
+    combined_context = "\n\n".join(state["findings"])
+    prompt = f"""
+You are an expert researcher. Read the following raw research findings and write a structured executive report.
+
+Raw Research Findings:
+{combined_context}
+
+{
+"title": the title of the query,
+"summary": the summary of the query,
+"findings": the findings of the query,
+"sources": the urls/sources of the query,
+"confidence_level": Low/Medium/High
+}
+"""

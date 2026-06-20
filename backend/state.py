@@ -6,4 +6,5 @@ class AgentState(TypedDict):
     visited_urls: list[str]
     findings: list[str]
     retry_count: int
+    final_report: dict
 
