@@ -6,7 +6,7 @@ A production-grade, state-governed single-agent research assistant built in Pyth
 
 ## 🛠️ Core Engineering Patterns Demonstrated
 
-* **State-Driven Synthesis:** Rather than running unstructured AI prompts, the data flow is strictly state-governed. A sequential pipeline runs: `search` (URLs extraction) ➡️ `fetch` (raw HTML scraper) ➡️ `synthesis` (deep-reasoning summary). The LLM acts as the final aggregator, compiling the structured state.
+* **State-Driven Synthesis:** Rather than running unstructured AI prompts, the data flow is strictly state-governed. A sequential pipeline runs: `search` (URLs extraction) ➡️ `fetch` (raw HTML scraper) ➡️ `synthesis` (deep-reasoning summary). The LLM acts as the final aggregator, compiling the structured state..
 * **State Segregation:** We isolate raw, high-volume operational data (HTML scraps) from the final generated executive report (`final_report: dict`) inside our LangGraph state, ensuring data purity and preventing state pollution.
 * **Graceful Failure Handling:** Intercepts scraping and network failures at the node level by filtering out network warnings and corrupted pages before they contaminate the LLM’s context window.
 * **Execution Context Isolation:** Guarantees multi-user safety by using local list accumulators inside function nodes, completely eliminating memory leaks and cross-user data exposure.
